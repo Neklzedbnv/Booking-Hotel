@@ -1,0 +1,3 @@
+module Gofinal
+
+go 1.25.5
