@@ -1,15 +1,25 @@
 package catalog
 
-import "net/http"
+import (
+	"encoding/json"
+	"net/http"
+)
 
-type Handler struct{}
-
-func NewHandler() *Handler {
-	return &Handler{}
+type Handler struct {
+	service *Service
 }
 
-// read-only endpoint (достаточно для Assignment 4)
+func NewHandler(service *Service) *Handler {
+	return &Handler{service: service}
+}
+
 func (h *Handler) GetAll(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(`{"message":"catalog endpoint works"}`))
+	rooms, err := h.service.GetAll()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(rooms)
 }

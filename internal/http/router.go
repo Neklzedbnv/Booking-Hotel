@@ -4,21 +4,26 @@ import (
 	"net/http"
 
 	"Gofinal/internal/booking"
+	"Gofinal/internal/auth"
+	"Gofinal/internal/catalog"
 )
 
-func NewRouter(h *booking.Handler) *http.ServeMux {
+func NewRouter(
+	bookingHandler *booking.Handler,
+	authHandler *auth.Handler,
+	catalogHandler *catalog.Handler,
+) http.Handler {
+
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/bookings", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodPost {
-			h.Create(w, r)
-		}
-		if r.Method == http.MethodGet {
-			h.GetAll(w, r)
-		}
-	})
+	// booking
+	mux.HandleFunc("/bookings", bookingHandler.GetAll)
 
-	mux.HandleFunc("/booking", h.GetByID)
+	// auth
+	mux.HandleFunc("/auth/health", authHandler.Health)
+
+	// catalog
+	mux.HandleFunc("/catalog", catalogHandler.GetAll)
 
 	return mux
 }

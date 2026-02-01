@@ -5,24 +5,38 @@ import (
 	"net/http"
 	"time"
 
+	"Gofinal/internal/auth"
 	"Gofinal/internal/booking"
+	"Gofinal/internal/catalog"
 	"Gofinal/internal/db"
 	httpx "Gofinal/internal/http"
 )
 
 func main() {
-	// одно подключение к БД
 	dbConn := db.NewPostgres()
 
-	// booking layers
-	repo := booking.NewRepo(dbConn)
-	service := booking.NewService(repo)
-	handler := booking.NewHandler(service)
+	// booking
+	bookingRepo := booking.NewRepo(dbConn)
+	bookingService := booking.NewService(bookingRepo)
+	bookingHandler := booking.NewHandler(bookingService)
 
-	// router
-	router := httpx.NewRouter(handler)
+	// auth (in-memory, без БД — это ОК для milestone)
+	authRepo := auth.NewRepo()
+	authService := auth.NewService(authRepo)
+	authHandler := auth.NewHandler(authService)
 
-	// goroutine (concurrency requirement)
+	// catalog (read-only stub — ОК)
+	catalogRepo := catalog.NewRepo()
+	catalogService := catalog.NewService(catalogRepo)
+	catalogHandler := catalog.NewHandler(catalogService)
+
+	router := httpx.NewRouter(
+		bookingHandler,
+		authHandler,
+		catalogHandler,
+	)
+
+	// concurrency requirement
 	go func() {
 		for {
 			log.Println("background worker alive")
