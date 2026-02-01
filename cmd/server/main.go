@@ -3,20 +3,28 @@ package main
 import (
 	"log"
 	"net/http"
+	"time"
 
 	"Gofinal/internal/booking"
 	"Gofinal/internal/db"
-	httpRouter "Gofinal/internal/http"
+	httpx "Gofinal/internal/http"
 )
 
 func main() {
-	database := db.NewPostgres()
+	dbConn := db.NewPostgres()
 
-	bookingRepo := booking.NewRepo(database)
-	bookingService := booking.NewService(bookingRepo)
-	bookingHandler := booking.NewHandler(bookingService)
+	repo := booking.NewRepo(dbConn)
+	service := booking.NewService(repo)
+	handler := booking.NewHandler(service)
 
-	router := httpRouter.NewRouter(bookingHandler)
+	router := httpx.NewRouter(handler)
+
+	go func() {
+		for {
+			log.Println("background worker alive")
+			time.Sleep(10 * time.Second)
+		}
+	}()
 
 	log.Println("Server started on :8080")
 	log.Fatal(http.ListenAndServe(":8080", router))
