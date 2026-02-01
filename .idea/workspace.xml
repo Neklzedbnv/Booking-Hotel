@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a2f3c0-18d0-46d6-9b1c-5141dfcdc2bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/booking/repo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/booking/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/booking/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/booking/repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/booking/repo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/booking/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/booking/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/db/postgres.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/db/postgres.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/booking.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/interfaces.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/interfaces.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/package.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/package.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/payment.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/payment.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/review.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/review.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/http/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/http/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,1 +1,90 @@
 package booking
+
+import (
+	"database/sql"
+
+	"Gofinal/internal/domain"
+)
+
+type Repo struct {
+	db *sql.DB
+}
+
+func NewRepo(db *sql.DB) *Repo {
+	return &Repo{db: db}
+}
+
+func (r *Repo) Create(b domain.Booking) (domain.Booking, error) {
+	query := `
+		INSERT INTO bookings
+		(user_id, room_id, mealplan_id, package_id, start_date, end_date, stay_days, total_price)
+		VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+		RETURNING id, created_at
+	`
+
+	err := r.db.QueryRow(
+		query,
+		b.UserID,
+		b.RoomID,
+		b.MealplanID,
+		b.PackageID,
+		b.StartDate,
+		b.EndDate,
+		b.StayDays,
+		b.TotalPrice,
+	).Scan(&b.ID, &b.CreatedAt)
+
+	return b, err
+}
+
+func (r *Repo) GetAll() ([]domain.Booking, error) {
+	rows, err := r.db.Query(`
+		SELECT id, user_id, room_id, mealplan_id, package_id,
+		       start_date, end_date, stay_days, total_price, created_at
+		FROM bookings
+	`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var list []domain.Booking
+	for rows.Next() {
+		var b domain.Booking
+		rows.Scan(
+			&b.ID,
+			&b.UserID,
+			&b.RoomID,
+			&b.MealplanID,
+			&b.PackageID,
+			&b.StartDate,
+			&b.EndDate,
+			&b.StayDays,
+			&b.TotalPrice,
+			&b.CreatedAt,
+		)
+		list = append(list, b)
+	}
+	return list, nil
+}
+
+func (r *Repo) GetByID(id int) (domain.Booking, error) {
+	var b domain.Booking
+	err := r.db.QueryRow(`
+		SELECT id, user_id, room_id, mealplan_id, package_id,
+		       start_date, end_date, stay_days, total_price, created_at
+		FROM bookings WHERE id=$1
+	`, id).Scan(
+		&b.ID,
+		&b.UserID,
+		&b.RoomID,
+		&b.MealplanID,
+		&b.PackageID,
+		&b.StartDate,
+		&b.EndDate,
+		&b.StayDays,
+		&b.TotalPrice,
+		&b.CreatedAt,
+	)
+	return b, err
+}
