@@ -11,14 +11,18 @@ import (
 )
 
 func main() {
+	// одно подключение к БД
 	dbConn := db.NewPostgres()
 
+	// booking layers
 	repo := booking.NewRepo(dbConn)
 	service := booking.NewService(repo)
 	handler := booking.NewHandler(service)
 
+	// router
 	router := httpx.NewRouter(handler)
 
+	// goroutine (concurrency requirement)
 	go func() {
 		for {
 			log.Println("background worker alive")

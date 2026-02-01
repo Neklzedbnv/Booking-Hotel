@@ -1,118 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="ALL" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2a2f3c0-18d0-46d6-9b1c-5141dfcdc2bc" name="Changes" comment="">
+    <list default="true" id="7650d015-724f-44a6-a238-9925f911caf8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/booking/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/booking/handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/booking/repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/booking/repo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/booking/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/booking/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/db/postgres.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/db/postgres.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/booking.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/interfaces.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/interfaces.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/package.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/package.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/payment.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/payment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/review.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/review.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/http/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/http/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Go File" />
-      </list>
-    </option>
-  </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../Program Files/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
-}</component>
-  <component name="ProjectId" id="38cA5RN3HZNhi6nuy1XqkVqfdAs" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.GoLinterPluginOnboardingV2": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Abzal",
-    "go.sdk.automatically.set": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/пк/Desktop/Gofinal",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true"
+    "git-widget-placeholder": "main"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\пк\Desktop\Gofinal\internal" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="Go final" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="Go final" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-gosdk-72a9cf600ed8-448e06e64ec5-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-253.28294.337" />
-        <option value="bundled-js-predefined-d6986cc7102b-c7e53b3be11b-JavaScript-GO-253.28294.337" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="f2a2f3c0-18d0-46d6-9b1c-5141dfcdc2bc" name="Changes" comment="" />
-      <created>1769088301829</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1769088301829</updated>
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>
