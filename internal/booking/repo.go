@@ -14,6 +14,7 @@ func NewRepo(db *sql.DB) *Repo {
 	return &Repo{db: db}
 }
 
+
 func (r *Repo) Create(b domain.Booking) (domain.Booking, error) {
 	query := `
 		INSERT INTO bookings
@@ -37,6 +38,7 @@ func (r *Repo) Create(b domain.Booking) (domain.Booking, error) {
 	return b, err
 }
 
+
 func (r *Repo) GetAll() ([]domain.Booking, error) {
 	rows, err := r.db.Query(`
 		SELECT id, user_id, room_id, mealplan_id, package_id,
@@ -51,7 +53,7 @@ func (r *Repo) GetAll() ([]domain.Booking, error) {
 	var list []domain.Booking
 	for rows.Next() {
 		var b domain.Booking
-		rows.Scan(
+		if err := rows.Scan(
 			&b.ID,
 			&b.UserID,
 			&b.RoomID,
@@ -62,18 +64,23 @@ func (r *Repo) GetAll() ([]domain.Booking, error) {
 			&b.StayDays,
 			&b.TotalPrice,
 			&b.CreatedAt,
-		)
+		); err != nil {
+			return nil, err
+		}
 		list = append(list, b)
 	}
+
 	return list, nil
 }
+
 
 func (r *Repo) GetByID(id int) (domain.Booking, error) {
 	var b domain.Booking
 	err := r.db.QueryRow(`
 		SELECT id, user_id, room_id, mealplan_id, package_id,
 		       start_date, end_date, stay_days, total_price, created_at
-		FROM bookings WHERE id=$1
+		FROM bookings
+		WHERE id=$1
 	`, id).Scan(
 		&b.ID,
 		&b.UserID,
@@ -86,5 +93,32 @@ func (r *Repo) GetByID(id int) (domain.Booking, error) {
 		&b.TotalPrice,
 		&b.CreatedAt,
 	)
+
 	return b, err
+}
+
+
+func (r *Repo) Update(b domain.Booking) (domain.Booking, error) {
+	query := `
+		UPDATE bookings
+		SET start_date=$1, end_date=$2, stay_days=$3, total_price=$4
+		WHERE id=$5
+	`
+
+	_, err := r.db.Exec(
+		query,
+		b.StartDate,
+		b.EndDate,
+		b.StayDays,
+		b.TotalPrice,
+		b.ID,
+	)
+
+	return b, err
+}
+
+
+func (r *Repo) Delete(id int) error {
+	_, err := r.db.Exec(`DELETE FROM bookings WHERE id=$1`, id)
+	return err
 }

@@ -3,8 +3,8 @@ package http
 import (
 	"net/http"
 
-	"Gofinal/internal/booking"
 	"Gofinal/internal/auth"
+	"Gofinal/internal/booking"
 	"Gofinal/internal/catalog"
 )
 
@@ -16,14 +16,32 @@ func NewRouter(
 
 	mux := http.NewServeMux()
 
-	// booking
-	mux.HandleFunc("/bookings", bookingHandler.GetAll)
+	
+	mux.HandleFunc("/bookings", func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case http.MethodGet:
+			bookingHandler.GetAll(w, r)
+		case http.MethodPost:
+			bookingHandler.Create(w, r)
+		case http.MethodPut:
+			bookingHandler.Update(w, r)
+		case http.MethodDelete:
+			bookingHandler.Delete(w, r)
+		default:
+			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		}
+	})
 
-	// auth
+	
 	mux.HandleFunc("/auth/health", authHandler.Health)
 
-	// catalog
+	
 	mux.HandleFunc("/catalog", catalogHandler.GetAll)
+
+	
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("OK"))
+	})
 
 	return mux
 }
