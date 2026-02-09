@@ -1,19 +1,24 @@
 package main
 
 import (
-	"log"
-	"net/http"
-	"time"
-
 	"Gofinal/internal/auth"
 	"Gofinal/internal/booking"
 	"Gofinal/internal/catalog"
 	"Gofinal/internal/db"
-	httpx "Gofinal/internal/http"
+	introuter "Gofinal/internal/http"
+	"log"
+	"net/http"
+	"time"
 )
 
 func main() {
+	
 	dbConn := db.NewPostgres()
+
+	
+	authRepo := auth.NewRepo(dbConn)
+	authService := auth.NewService(authRepo)
+	authHandler := auth.NewHandler(authService)
 
 	
 	bookingRepo := booking.NewRepo(dbConn)
@@ -21,20 +26,19 @@ func main() {
 	bookingHandler := booking.NewHandler(bookingService)
 
 	
-	authRepo := auth.NewRepo()
-	authService := auth.NewService(authRepo)
-	authHandler := auth.NewHandler(authService)
+	roomRepo := catalog.NewRoomRepo(dbConn)
+	roomService := catalog.NewRoomService(roomRepo)
+	roomHandler := catalog.NewRoomHandler(roomService)
 
+	packageRepo := catalog.NewPackageRepo(dbConn)
+	packageService := catalog.NewPackageService(packageRepo)
+	packageHandler := catalog.NewPackageHandler(packageService)
 
-	catalogRepo := catalog.NewRepo()
-	catalogService := catalog.NewService(catalogRepo)
-	catalogHandler := catalog.NewHandler(catalogService)
-
-	router := httpx.NewRouter(
-		bookingHandler,
-		authHandler,
-		catalogHandler,
-	)
+	
+	router := introuter.NewRouter(authHandler, bookingHandler)
+	router.SetRoomHandler(roomHandler)
+	router.SetPackageHandler(packageHandler)
+	handler := router.SetupRoutes()
 
 	
 	go func() {
@@ -44,6 +48,7 @@ func main() {
 		}
 	}()
 
+	
 	log.Println("Server started on :8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }

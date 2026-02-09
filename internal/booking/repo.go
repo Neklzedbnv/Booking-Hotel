@@ -18,9 +18,9 @@ func NewRepo(db *sql.DB) *Repo {
 func (r *Repo) Create(b domain.Booking) (domain.Booking, error) {
 	query := `
 		INSERT INTO bookings
-		(user_id, room_id, mealplan_id, package_id, start_date, end_date, stay_days, total_price)
-		VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
-		RETURNING id, created_at
+		(user_id, room_id, mealplan_id, package_id, start_date, end_date, stay_days, total_price, created_at)
+		VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
+		RETURNING id
 	`
 
 	err := r.db.QueryRow(
@@ -33,7 +33,8 @@ func (r *Repo) Create(b domain.Booking) (domain.Booking, error) {
 		b.EndDate,
 		b.StayDays,
 		b.TotalPrice,
-	).Scan(&b.ID, &b.CreatedAt)
+		b.CreatedAt,
+	).Scan(&b.ID)
 
 	return b, err
 }
