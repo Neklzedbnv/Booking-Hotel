@@ -1,10 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your bookings and profile">
+  <title>My Profile - HotelStay</title>
+  <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="home.html" class="logo">
+        <div class="logo-icon">H</div>
+        HotelStay
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="profile.html" class="active">My Bookings</a></li>
+          <li><a href="login.html" class="nav-cta">Sign Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>My Account</h1>
+      <p>Manage your bookings and personal information</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="section">
+    <div class="container">
+      <div class="profile-layout">
+        <!-- Profile Sidebar -->
+        <aside class="profile-sidebar">
+          <div class="profile-avatar">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="John Smith">
+          </div>
+          
+          <h2 class="profile-name">John Smith</h2>
+          <p class="profile-email">john.smith@example.com</p>
+
+          <nav class="profile-nav">
+            <a href="#overview" class="active">📊 Overview</a>
+            <a href="#bookings">📅 My Bookings</a>
+            <a href="#personal">👤 Personal Info</a>
+            <a href="#settings">⚙️ Settings</a>
+            <a href="login.html" style="color: #dc2626;">🚪 Sign Out</a>
+          </nav>
+        </aside>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+          <!-- Overview Section -->
+          <div id="overview" class="profile-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+              <h2 class="profile-section-title" style="margin-bottom: 0;">Account Overview</h2>
+              <span style="padding: 0.5rem 1rem; background: #e8f0fe; color: #2c5aa0; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">
+                Premium Member
+              </span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+              <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2c5aa0;">
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">Total Bookings</p>
+                <p style="font-size: 2rem; font-weight: 700; color: #222;">12</p>
+              </div>
+              
+              <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745;">
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">Upcoming Stays</p>
+                <p style="font-size: 2rem; font-weight: 700; color: #222;">2</p>
+              </div>
+              
+              <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffc107;">
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">Loyalty Points</p>
+                <p style="font-size: 2rem; font-weight: 700; color: #222;">1,240</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming Bookings Section -->
+          <div id="bookings" class="profile-section">
+            <h2 class="profile-section-title">Upcoming Bookings</h2>
+
+            <!-- Booking 1 -->
+            <div class="booking-history-item">
+              <div class="booking-header">
+                <h3 class="booking-room-name">Deluxe Ocean Suite</h3>
+                <span class="booking-status status-confirmed">Confirmed</span>
+              </div>
+              <div class="booking-details-grid">
+                <div>
+                  <strong>Confirmation:</strong> #HTS-2024-789456
+                </div>
+                <div>
+                  <strong>Check-in:</strong> June 15, 2024
+                </div>
+                <div>
+                  <strong>Check-out:</strong> June 18, 2024
+                </div>
+                <div>
+                  <strong>Guests:</strong> 2 Adults
+                </div>
+                <div>
+                  <strong>Nights:</strong> 3
+                </div>
+                <div>
+                  <strong>Total:</strong> $1,000
+                </div>
+              </div>
+              <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="booking.html" class="btn btn-secondary btn-small">Modify Booking</a>
+                <a href="#" class="btn btn-outline btn-small" style="border: 1px solid #dc2626; color: #dc2626;">Cancel</a>
+                <a href="#" class="btn btn-primary btn-small">View Details</a>
+              </div>
+            </div>
+
+            <!-- Booking 2 -->
+            <div class="booking-history-item">
+              <div class="booking-header">
+                <h3 class="booking-room-name">Executive Business Room</h3>
+                <span class="booking-status status-confirmed">Confirmed</span>
+              </div>
+              <div class="booking-details-grid">
+                <div>
+                  <strong>Confirmation:</strong> #HTS-2024-892341
+                </div>
+                <div>
+                  <strong>Check-in:</strong> July 20, 2024
+                </div>
+                <div>
+                  <strong>Check-out:</strong> July 23, 2024
+                </div>
+                <div>
+                  <strong>Guests:</strong> 1 Adult
+                </div>
+                <div>
+                  <strong>Nights:</strong> 3
+                </div>
+                <div>
+                  <strong>Total:</strong> $567
+                </div>
+              </div>
+              <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="booking.html" class="btn btn-secondary btn-small">Modify Booking</a>
+                <a href="#" class="btn btn-outline btn-small" style="border: 1px solid #dc2626; color: #dc2626;">Cancel</a>
+                <a href="#" class="btn btn-primary btn-small">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past Bookings Section -->
+          <div class="profile-section">
+            <h2 class="profile-section-title">Past Bookings</h2>
+
+            <!-- Past Booking 1 -->
+            <div class="booking-history-item">
+              <div class="booking-header">
+                <h3 class="booking-room-name">Family Garden Suite</h3>
+                <span class="booking-status status-completed">Completed</span>
+              </div>
+              <div class="booking-details-grid">
+                <div>
+                  <strong>Confirmation:</strong> #HTS-2024-123789
+                </div>
+                <div>
+                  <strong>Check-in:</strong> March 10, 2024
+                </div>
+                <div>
+                  <strong>Check-out:</strong> March 15, 2024
+                </div>
+                <div>
+                  <strong>Guests:</strong> 2 Adults, 2 Children
+                </div>
+                <div>
+                  <strong>Nights:</strong> 5
+                </div>
+                <div>
+                  <strong>Total:</strong> $1,745
+                </div>
+              </div>
+              <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="rooms.html" class="btn btn-primary btn-small">Book Again</a>
+                <a href="#" class="btn btn-secondary btn-small">Write Review</a>
+                <a href="#" class="btn btn-outline btn-small" style="border: 1px solid #666; color: #666;">View Receipt</a>
+              </div>
+            </div>
+
+            <!-- Past Booking 2 -->
+            <div class="booking-history-item">
+              <div class="booking-header">
+                <h3 class="booking-room-name">Cozy Standard Room</h3>
+                <span class="booking-status status-completed">Completed</span>
+              </div>
+              <div class="booking-details-grid">
+                <div>
+                  <strong>Confirmation:</strong> #HTS-2024-456123
+                </div>
+                <div>
+                  <strong>Check-in:</strong> January 5, 2024
+                </div>
+                <div>
+                  <strong>Check-out:</strong> January 7, 2024
+                </div>
+                <div>
+                  <strong>Guests:</strong> 1 Adult
+                </div>
+                <div>
+                  <strong>Nights:</strong> 2
+                </div>
+                <div>
+                  <strong>Total:</strong> $258
+                </div>
+              </div>
+              <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="rooms.html" class="btn btn-primary btn-small">Book Again</a>
+                <a href="#" class="btn btn-secondary btn-small">Write Review</a>
+                <a href="#" class="btn btn-outline btn-small" style="border: 1px solid #666; color: #666;">View Receipt</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Personal Information Section -->
+          <div id="personal" class="profile-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h2 class="profile-section-title" style="margin-bottom: 0;">Personal Information</h2>
+              <button class="btn btn-secondary btn-small">Edit</button>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-item">
+                <label class="info-label">Full Name</label>
+                <p class="info-value">John Smith</p>
+              </div>
+              
+              <div class="info-item">
+                <label class="info-label">Email Address</label>
+                <p class="info-value">john.smith@example.com</p>
+              </div>
+              
+              <div class="info-item">
+                <label class="info-label">Phone Number</label>
+                <p class="info-value">+1 (234) 567-890</p>
+              </div>
+              
+              <div class="info-item">
+                <label class="info-label">Date of Birth</label>
+                <p class="info-value">January 15, 1985</p>
+              </div>
+              
+              <div class="info-item">
+                <label class="info-label">Country</label>
+                <p class="info-value">United States</p>
+              </div>
+              
+              <div class="info-item">
+                <label class="info-label">Member Since</label>
+                <p class="info-value">December 2022</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preferences Section -->
+          <div id="settings" class="profile-section">
+            <h2 class="profile-section-title">Account Settings</h2>
+
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #222;">Notification Preferences</h3>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="filter-option">
+                  <input type="checkbox" id="email-notifications" checked>
+                  <label for="email-notifications">Email notifications for bookings and updates</label>
+                </div>
+                <div class="filter-option">
+                  <input type="checkbox" id="promo-emails" checked>
+                  <label for="promo-emails">Promotional emails and special offers</label>
+                </div>
+                <div class="filter-option">
+                  <input type="checkbox" id="sms-notifications">
+                  <label for="sms-notifications">SMS notifications for booking confirmations</label>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+              <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #222;">Security</h3>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <button class="btn btn-secondary" style="width: fit-content;">Change Password</button>
+                <button class="btn btn-outline" style="width: fit-content; border: 1px solid #666; color: #666;">Enable Two-Factor Authentication</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>HotelStay</h3>
+          <p>Your trusted partner for luxury hotel bookings worldwide. Discover comfort, elegance, and exceptional service.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">t</a>
+            <a href="#" aria-label="Instagram">i</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <nav class="footer-links">
+            <a href="home.html">Home</a>
+            <a href="rooms.html">Browse Rooms</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="profile.html">My Bookings</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <nav class="footer-links">
+            <a href="#">Help Center</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cancellation Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <nav class="footer-links">
+            <a href="tel:+1234567890">📞 +1 (234) 567-890</a>
+            <a href="mailto:info@hotelstay.com">✉️ info@hotelstay.com</a>
+            <a href="#">📍 123 Hotel Street, NY 10001</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 HotelStay. All rights reserved. | Designed for luxury travel experiences.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
