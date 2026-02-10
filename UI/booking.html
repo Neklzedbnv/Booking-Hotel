@@ -1,10 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your hotel room booking">
+  <title>Complete Booking - HotelStay</title>
+ <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="home.html" class="logo">
+        <div class="logo-icon">H</div>
+        HotelStay
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="profile.html">My Bookings</a></li>
+          <li><a href="login.html" class="nav-cta">Sign In</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Complete Your Booking</h1>
+      <p>You're just a few steps away from your perfect stay</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="section">
+    <div class="container">
+      <div class="booking-layout">
+        <!-- Booking Form -->
+        <div>
+          <form class="booking-form-card" action="booking-confirmation.html" method="post">
+            <!-- Guest Information -->
+            <div class="form-section">
+              <h2 class="form-section-title">Guest Information</h2>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstname" class="form-label">First Name *</label>
+                  <input type="text" id="firstname" name="firstname" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="lastname" class="form-label">Last Name *</label>
+                  <input type="text" id="lastname" name="lastname" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (234) 567-890" required>
+              </div>
+
+              <div class="form-group">
+                <label for="country" class="form-label">Country *</label>
+                <select id="country" name="country" class="form-select" required>
+                  <option value="">Select your country</option>
+                  <option value="us">United States</option>
+                  <option value="uk">United Kingdom</option>
+                  <option value="ca">Canada</option>
+                  <option value="au">Australia</option>
+                  <option value="de">Germany</option>
+                  <option value="fr">France</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Stay Details -->
+            <div class="form-section">
+              <h2 class="form-section-title">Stay Details</h2>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="checkin" class="form-label">Check-in Date *</label>
+                  <input type="date" id="checkin" name="checkin" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="checkout" class="form-label">Check-out Date *</label>
+                  <input type="date" id="checkout" name="checkout" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="guests" class="form-label">Number of Guests *</label>
+                <select id="guests" name="guests" class="form-select" required>
+                  <option value="1">1 Guest</option>
+                  <option value="2" selected>2 Guests</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="arrival" class="form-label">Estimated Arrival Time</label>
+                <select id="arrival" name="arrival" class="form-select">
+                  <option value="">Select time</option>
+                  <option value="morning">Morning (8:00 AM - 12:00 PM)</option>
+                  <option value="afternoon">Afternoon (12:00 PM - 6:00 PM)</option>
+                  <option value="evening">Evening (6:00 PM - 10:00 PM)</option>
+                  <option value="night">Late Night (After 10:00 PM)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Special Requests -->
+            <div class="form-section">
+              <h2 class="form-section-title">Special Requests (Optional)</h2>
+              
+              <div class="form-group">
+                <label for="requests" class="form-label">Special Requirements or Preferences</label>
+                <textarea 
+                  id="requests" 
+                  name="requests" 
+                  class="form-textarea" 
+                  placeholder="e.g., Extra pillows, high floor, early check-in request..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Payment Information -->
+            <div class="form-section">
+              <h2 class="form-section-title">Payment Information</h2>
+              
+              <div class="alert alert-info">
+                💳 Your credit card will not be charged now. Payment will be collected at the hotel.
+              </div>
+
+              <div class="form-group">
+                <label for="cardname" class="form-label">Cardholder Name *</label>
+                <input type="text" id="cardname" name="cardname" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label for="cardnumber" class="form-label">Card Number *</label>
+                <input type="text" id="cardnumber" name="cardnumber" class="form-input" placeholder="1234 5678 9012 3456" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiry" class="form-label">Expiry Date *</label>
+                  <input type="text" id="expiry" name="expiry" class="form-input" placeholder="MM/YY" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="cvv" class="form-label">CVV *</label>
+                  <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="form-section">
+              <div class="filter-option">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="#" style="color: #2c5aa0;">Terms & Conditions</a> and <a href="#" style="color: #2c5aa0;">Cancellation Policy</a> *</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-large">
+              Confirm Booking
+            </button>
+          </form>
+        </div>
+
+        <!-- Booking Summary Sidebar -->
+        <aside class="booking-sidebar">
+          <h2 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: #222;">Booking Summary</h2>
+
+          <!-- Room Info -->
+          <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee;">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop" alt="Deluxe Ocean Suite" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.2rem; color: #222; margin-bottom: 0.5rem;">Deluxe Ocean Suite</h3>
+            <p style="color: #666; font-size: 0.95rem; margin-bottom: 0.5rem;">King Size Bed • 2 Guests • 45 m²</p>
+            <p style="color: #2c5aa0; font-weight: 600;">Ocean View • Private Balcony</p>
+          </div>
+
+          <!-- Stay Details -->
+          <div style="margin-bottom: 1.5rem;">
+            <div class="booking-summary-item">
+              <span style="color: #555;">Check-in</span>
+              <span style="font-weight: 600;">June 15, 2024</span>
+            </div>
+            <div class="booking-summary-item">
+              <span style="color: #555;">Check-out</span>
+              <span style="font-weight: 600;">June 18, 2024</span>
+            </div>
+            <div class="booking-summary-item">
+              <span style="color: #555;">Length of Stay</span>
+              <span style="font-weight: 600;">3 Nights</span>
+            </div>
+            <div class="booking-summary-item">
+              <span style="color: #555;">Guests</span>
+              <span style="font-weight: 600;">2 Guests</span>
+            </div>
+          </div>
+
+          <!-- Price Breakdown -->
+          <div class="booking-summary">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #222;">Price Details</h3>
+            <div class="booking-summary-item">
+              <span>$299 × 3 nights</span>
+              <span>$897</span>
+            </div>
+            <div class="booking-summary-item">
+              <span>Service fee</span>
+              <span>$50</span>
+            </div>
+            <div class="booking-summary-item">
+              <span>Taxes & fees</span>
+              <span>$53</span>
+            </div>
+          </div>
+
+          <div class="booking-total">
+            <span>Total Amount</span>
+            <span>$1,000</span>
+          </div>
+
+          <!-- Help Info -->
+          <div style="margin-top: 2rem; padding: 1.2rem; background: #f8f9fa; border-radius: 8px;">
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 0.8rem;">
+              <strong>Need Help?</strong>
+            </p>
+            <p style="font-size: 0.85rem; color: #666; line-height: 1.6;">
+              Contact our support team 24/7 at<br>
+              📞 +1 (234) 567-890<br>
+              ✉️ support@hotelstay.com
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>HotelStay</h3>
+          <p>Your trusted partner for luxury hotel bookings worldwide. Discover comfort, elegance, and exceptional service.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">t</a>
+            <a href="#" aria-label="Instagram">i</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <nav class="footer-links">
+            <a href="home.html">Home</a>
+            <a href="rooms.html">Browse Rooms</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="profile.html">My Bookings</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <nav class="footer-links">
+            <a href="#">Help Center</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cancellation Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <nav class="footer-links">
+            <a href="tel:+1234567890">📞 +1 (234) 567-890</a>
+            <a href="mailto:info@hotelstay.com">✉️ info@hotelstay.com</a>
+            <a href="#">📍 123 Hotel Street, NY 10001</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 HotelStay. All rights reserved. | Designed for luxury travel experiences.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
