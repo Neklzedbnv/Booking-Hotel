@@ -1,10 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse our selection of luxury hotel rooms and suites">
+  <title>Available Rooms - HotelStay</title>
+  <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="home.html" class="logo">
+        <div class="logo-icon">H</div>
+        HotelStay
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="rooms.html" class="active">Rooms</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="profile.html">My Bookings</a></li>
+          <li><a href="login.html" class="nav-cta">Sign In</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Available Rooms</h1>
+      <p>Find the perfect accommodation for your stay</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="section">
+    <div class="container">
+      <div class="rooms-layout">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+          <h2 class="filter-title">Filter Rooms</h2>
+
+          <!-- Price Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title" style="font-size: 1rem;">Price Range</h3>
+            <div class="price-range">
+              <input type="number" placeholder="Min" min="0" value="0">
+              <span>-</span>
+              <input type="number" placeholder="Max" min="0" value="500">
+            </div>
+            <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">$0 - $500 per night</p>
+          </div>
+
+          <!-- Capacity Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title" style="font-size: 1rem;">Guest Capacity</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="capacity1" name="capacity" value="1">
+              <label for="capacity1">1-2 Guests</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="capacity2" name="capacity" value="3">
+              <label for="capacity2">3-4 Guests</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="capacity3" name="capacity" value="5">
+              <label for="capacity3">5+ Guests</label>
+            </div>
+          </div>
+
+          <!-- Room Type Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title" style="font-size: 1rem;">Room Type</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="type1" name="type" value="suite">
+              <label for="type1">Suite</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="type2" name="type" value="deluxe">
+              <label for="type2">Deluxe</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="type3" name="type" value="standard">
+              <label for="type3">Standard</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="type4" name="type" value="family">
+              <label for="type4">Family Room</label>
+            </div>
+          </div>
+
+          <!-- Amenities Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title" style="font-size: 1rem;">Amenities</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="wifi" name="amenity" value="wifi">
+              <label for="wifi">Free Wi-Fi</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="parking" name="amenity" value="parking">
+              <label for="parking">Free Parking</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="breakfast" name="amenity" value="breakfast">
+              <label for="breakfast">Breakfast Included</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="pool" name="amenity" value="pool">
+              <label for="pool">Pool Access</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="gym" name="amenity" value="gym">
+              <label for="gym">Gym Access</label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-full">Apply Filters</button>
+          <button class="btn btn-secondary btn-full mt-2">Clear All</button>
+        </aside>
+
+        <!-- Rooms List -->
+        <div>
+          <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: #666; font-size: 1.05rem;"><strong>24 rooms</strong> available</p>
+            <select class="form-select" style="width: auto;">
+              <option>Sort by: Recommended</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Guest Rating</option>
+            </select>
+          </div>
+
+          <div class="rooms-grid">
+            <!-- Room 1 -->
+            <article class="room-card">
+              <div class="room-card-image">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop" alt="Deluxe Ocean Suite">
+                <span class="room-badge">Popular</span>
+              </div>
+              <div class="room-card-content">
+                <div class="room-card-header">
+                  <h3 class="room-title">Deluxe Ocean Suite</h3>
+                  <div class="room-price">
+                    <span class="price-amount">$299</span>
+                    <span class="price-period">per night</span>
+                  </div>
+                </div>
+                <p class="room-description">
+                  Experience breathtaking ocean views from this luxurious suite with a private balcony and king-size bed.
+                </p>
+                <div class="room-meta">
+                  <span class="room-meta-item">🛏️ King Bed</span>
+                  <span class="room-meta-item">👥 2 Guests</span>
+                  <span class="room-meta-item">📐 45 m²</span>
+                </div>
+                <a href="room-details.html" class="btn btn-primary btn-full">View Details</a>
+              </div>
+            </article>
+
+            <!-- Room 2 -->
+            <article class="room-card">
+              <div class="room-card-image">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&h=600&fit=crop" alt="Executive Business Room">
+                <span class="room-badge">Best Value</span>
+              </div>
+              <div class="room-card-content">
+                <div class="room-card-header">
+                  <h3 class="room-title">Executive Business Room</h3>
+                  <div class="room-price">
+                    <span class="price-amount">$189</span>
+                    <span class="price-period">per night</span>
+                  </div>
+                </div>
+                <p class="room-description">
+                  Perfect for business travelers with a spacious work desk, high-speed Wi-Fi, and city views.
+                </p>
+                <div class="room-meta">
+                  <span class="room-meta-item">🛏️ Queen Bed</span>
+                  <span class="room-meta-item">👥 2 Guests</span>
+                  <span class="room-meta-item">📐 35 m²</span>
+                </div>
+                <a href="room-details.html" class="btn btn-primary btn-full">View Details</a>
+              </div>
+            </article>
+
+            <!-- Room 3 -->
+            <article class="room-card">
+              <div class="room-card-image">
+                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop" alt="Family Garden Suite">
+              </div>
+              <div class="room-card-content">
+                <div class="room-card-header">
+                  <h3 class="room-title">Family Garden Suite</h3>
+                  <div class="room-price">
+                    <span class="price-amount">$349</span>
+                    <span class="price-period">per night</span>
+                  </div>
+                </div>
+                <p class="room-description">
+                  Spacious suite with separate living area and garden access, ideal for families and longer stays.
+                </p>
+                <div class="room-meta">
+                  <span class="room-meta-item">🛏️ 2 Beds</span>
+                  <span class="room-meta-item">👥 4 Guests</span>
+                  <span class="room-meta-item">📐 65 m²</span>
+                </div>
+                <a href="room-details.html" class="btn btn-primary btn-full">View Details</a>
+              </div>
+            </article>
+
+            <!-- Room 4 -->
+            <article class="room-card">
+              <div class="room-card-image">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop" alt="Presidential Suite">
+                <span class="room-badge">Luxury</span>
+              </div>
+              <div class="room-card-content">
+                <div class="room-card-header">
+                  <h3 class="room-title">Presidential Suite</h3>
+                  <div class="room-price">
+                    <span class="price-amount">$599</span>
+                    <span class="price-period">per night</span>
+                  </div>
+                </div>
+                <p class="room-description">
+                  Ultimate luxury with panoramic views, separate dining room, and premium butler service.
+                </p>
+                <div class="room-meta">
+                  <span class="room-meta-item">🛏️ King Bed</span>
+                  <span class="room-meta-item">👥 2 Guests</span>
+                  <span class="room-meta-item">📐 95 m²</span>
+                </div>
+                <a href="room-details.html" class="btn btn-primary btn-full">View Details</a>
+              </div>
+            </article>
+
+            <!-- Room 5 -->
+            <article class="room-card">
+              <div class="room-card-image">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop" alt="Cozy Standard Room">
+              </div>
+              <div class="room-card-content">
+                <div class="room-card-header">
+                  <h3 class="room-title">Cozy Standard Room</h3>
+                  <div class="room-price">
+                    <span class="price-amount">$129</span>
+                    <span class="price-period">per night</span>
+                  </div>
+                </div>
+                <p class="room-description">
+                  Comfortable and affordable room with all essential amenities for a pleasant stay.
+                </p>
+                <div class="room-meta">
+                  <span class="room-meta-item">🛏️ Double Bed</span>
+                  <span class="room-meta-item">👥 2 Guests</span>
+                  <span class="room-meta-item">📐 25 m²</span>
+                </div>
+                <a href="room-details.html" class="btn btn-primary btn-full">View Details</a>
+              </div>
+            </article>
+
+            <!-- Room 6 -->
+            <article class="room-card">
+              <div class="room-card-image">
+                <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&h=600&fit=crop" alt="Penthouse Suite">
+                <span class="room-badge">New</span>
+              </div>
+              <div class="room-card-content">
+                <div class="room-card-header">
+                  <h3 class="room-title">Penthouse Suite</h3>
+                  <div class="room-price">
+                    <span class="price-amount">$799</span>
+                    <span class="price-period">per night</span>
+                  </div>
+                </div>
+                <p class="room-description">
+                  Top-floor penthouse with private terrace, jacuzzi, and stunning 360-degree city views.
+                </p>
+                <div class="room-meta">
+                  <span class="room-meta-item">🛏️ King Bed</span>
+                  <span class="room-meta-item">👥 3 Guests</span>
+                  <span class="room-meta-item">📐 120 m²</span>
+                </div>
+                <a href="room-details.html" class="btn btn-primary btn-full">View Details</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 3rem;">
+            <button class="btn btn-secondary btn-small">Previous</button>
+            <button class="btn btn-primary btn-small">1</button>
+            <button class="btn btn-secondary btn-small">2</button>
+            <button class="btn btn-secondary btn-small">3</button>
+            <button class="btn btn-secondary btn-small">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>HotelStay</h3>
+          <p>Your trusted partner for luxury hotel bookings worldwide. Discover comfort, elegance, and exceptional service.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">t</a>
+            <a href="#" aria-label="Instagram">i</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <nav class="footer-links">
+            <a href="home.html">Home</a>
+            <a href="rooms.html">Browse Rooms</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="profile.html">My Bookings</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <nav class="footer-links">
+            <a href="#">Help Center</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cancellation Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <nav class="footer-links">
+            <a href="tel:+1234567890">📞 +1 (234) 567-890</a>
+            <a href="mailto:info@hotelstay.com">✉️ info@hotelstay.com</a>
+            <a href="#">📍 123 Hotel Street, NY 10001</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 HotelStay. All rights reserved. | Designed for luxury travel experiences.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
