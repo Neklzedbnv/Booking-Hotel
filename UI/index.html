@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurelian Hotel &amp; Resorts</title>
+<link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Aurelian<span>.</span></a>
+      <div class="navbar-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="profile.html">Profile</a>
+        <a href="login.html">Sign In</a>
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+      </div>
+      <div class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="rooms.html">Rooms</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+      <a href="profile.html">Profile</a>
+      <a href="login.html">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <img src="images/hero.jpg" alt="Luxury hotel lobby" class="hero-bg" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-label">Luxury Redefined</p>
+      <h1>Experience Timeless Elegance</h1>
+      <p>Discover unparalleled comfort and sophistication at Aurelian Hotel &amp; Resorts. Where every moment is crafted for perfection.</p>
+      <div class="hero-buttons">
+        <a href="rooms.html" class="btn btn-primary btn-lg">Explore Rooms</a>
+        <a href="booking.html" class="btn btn-lg" style="background:rgba(255,255,255,.15); color:#fff; border-color:rgba(255,255,255,.3);">Book Your Stay</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED ROOMS ========== -->
+  <section class="section" style="background:var(--color-bg-alt);">
+    <div class="container">
+      <div class="text-center fade-in-up">
+        <span class="section-label">Accommodations</span>
+        <h2 class="section-title">Our Finest Rooms</h2>
+        <p class="section-subtitle mx-auto">Each room is thoughtfully designed to provide the ultimate retreat, blending modern amenities with timeless elegance.</p>
+      </div>
+      <div class="rooms-grid">
+
+        <!-- Room 1 -->
+        <div class="card room-card">
+          <div class="room-card-img-wrapper">
+            <img src="images/room-standard.jpg" alt="Standard Room" class="room-card-img" />
+          </div>
+          <div class="room-card-body">
+            <p class="room-card-category">Classic</p>
+            <h3 class="room-card-title">Standard Room</h3>
+            <div class="room-card-features">
+              <span class="room-card-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+                Queen Bed
+              </span>
+              <span class="room-card-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                28 m&sup2;
+              </span>
+            </div>
+            <div class="room-card-footer">
+              <p class="room-card-price">$180 <span>/ night</span></p>
+              <a href="room-details.html" class="btn btn-outline btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 2 -->
+        <div class="card room-card">
+          <div class="room-card-img-wrapper">
+            <img src="images/room-deluxe.jpg" alt="Deluxe Room" class="room-card-img" />
+          </div>
+          <div class="room-card-body">
+            <p class="room-card-category">Premium</p>
+            <h3 class="room-card-title">Deluxe Room</h3>
+            <div class="room-card-features">
+              <span class="room-card-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+                King Bed
+              </span>
+              <span class="room-card-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                42 m&sup2;
+              </span>
+            </div>
+            <div class="room-card-footer">
+              <p class="room-card-price">$320 <span>/ night</span></p>
+              <a href="room-details.html" class="btn btn-outline btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 3 -->
+        <div class="card room-card">
+          <div class="room-card-img-wrapper">
+            <img src="images/room-suite.jpg" alt="Executive Suite" class="room-card-img" />
+          </div>
+          <div class="room-card-body">
+            <p class="room-card-category">Luxury</p>
+            <h3 class="room-card-title">Executive Suite</h3>
+            <div class="room-card-features">
+              <span class="room-card-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+                King Bed
+              </span>
+              <span class="room-card-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                65 m&sup2;
+              </span>
+            </div>
+            <div class="room-card-footer">
+              <p class="room-card-price">$520 <span>/ night</span></p>
+              <a href="room-details.html" class="btn btn-outline btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AMENITIES ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Experiences</span>
+        <h2 class="section-title">World-Class Amenities</h2>
+        <p class="section-subtitle mx-auto">Indulge in our curated collection of amenities designed for relaxation, dining, and rejuvenation.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <img src="images/spa.jpg" alt="Luxury spa" />
+          <div class="amenity-card-overlay">
+            <h3>The Serenity Spa</h3>
+            <p>Rejuvenating treatments &amp; wellness rituals</p>
+          </div>
+        </div>
+        <div class="amenity-card">
+          <img src="images/restaurant.jpg" alt="Fine dining restaurant" />
+          <div class="amenity-card-overlay">
+            <h3>Fine Dining</h3>
+            <p>Michelin-inspired culinary experiences</p>
+          </div>
+        </div>
+        <div class="amenity-card">
+          <img src="images/pool.jpg" alt="Rooftop infinity pool" />
+          <div class="amenity-card-overlay">
+            <h3>Infinity Pool</h3>
+            <p>Rooftop pool with panoramic views</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section" style="background:var(--color-bg-alt);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Testimonials</span>
+        <h2 class="section-title">What Our Guests Say</h2>
+        <p class="section-subtitle mx-auto">Hear from guests who have experienced the Aurelian difference.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"An absolutely breathtaking experience. The attention to detail and impeccable service made our anniversary trip truly unforgettable."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SC</div>
+            <div class="testimonial-author-info">
+              <h4>Sarah &amp; Chris M.</h4>
+              <p>New York, USA</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"The Presidential Suite exceeded every expectation. The spa treatments were divine and the rooftop pool views are simply spectacular."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JT</div>
+            <div class="testimonial-author-info">
+              <h4>James T.</h4>
+              <p>London, UK</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"From the moment we arrived, the staff made us feel like royalty. World-class dining and an atmosphere of pure relaxation."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AK</div>
+            <div class="testimonial-author-info">
+              <h4>Aiko K.</h4>
+              <p>Tokyo, Japan</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>Ready for an Unforgettable Stay?</h2>
+          <p>Book your room today and experience the perfect blend of luxury, comfort, and world-class hospitality.</p>
+        </div>
+        <a href="booking.html" class="btn btn-primary btn-lg">Reserve Your Room</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Aurelian<span>.</span></p>
+          <p class="footer-desc">Luxury hospitality redefined. Experience world-class comfort and timeless elegance at every stay.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="rooms.html">Our Rooms</a>
+          <a href="booking.html">Reservations</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Experience</h4>
+          <a href="#">The Spa</a>
+          <a href="#">Fine Dining</a>
+          <a href="#">Events</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="login.html">Sign In</a>
+          <a href="register.html">Register</a>
+          <a href="profile.html">My Profile</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aurelian Hotel &amp; Resorts. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
