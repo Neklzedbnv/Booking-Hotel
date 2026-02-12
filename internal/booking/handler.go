@@ -2,12 +2,21 @@ package booking
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
 
 	"Gofinal/internal/domain"
+	"Gofinal/pkg/common"
 )
+
+// jsonError sends JSON error
+func jsonError(w http.ResponseWriter, msg string, code int) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+	json.NewEncoder(w).Encode(map[string]string{"error": msg})
+}
 
 type Handler struct {
 	service *Service
@@ -19,39 +28,46 @@ func NewHandler(s *Service) *Handler {
 
 func (h *Handler) Create(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		jsonError(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Get user_id from JWT token (context)
+	userID, ok := r.Context().Value(common.ContextUserID).(int)
+	if !ok || userID == 0 {
+		jsonError(w, "authentication required", http.StatusUnauthorized)
 		return
 	}
 
 	var req struct {
-		UserID     int     `json:"user_id"`
-		RoomID     int     `json:"room_id"`
-		MealplanID *int    `json:"mealplan_id"`
-		PackageID  *int    `json:"package_id"`
-		StartDate  string  `json:"start_date"`
-		EndDate    string  `json:"end_date"`
-		TotalPrice float64 `json:"total_price"`
+		RoomID        int     `json:"room_id"`
+		MealplanID    *int    `json:"mealplan_id"`
+		PackageID     *int    `json:"package_id"`
+		StartDate     string  `json:"start_date"`
+		EndDate       string  `json:"end_date"`
+		TotalPrice    float64 `json:"total_price"`
+		PaymentMethod string  `json:"payment_method"`
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, "invalid json", http.StatusBadRequest)
+		jsonError(w, "invalid json", http.StatusBadRequest)
 		return
 	}
 
 	start, err := time.Parse("2006-01-02", req.StartDate)
 	if err != nil {
-		http.Error(w, "invalid start_date", 400)
+		jsonError(w, "invalid start_date", http.StatusBadRequest)
 		return
 	}
 
 	end, err := time.Parse("2006-01-02", req.EndDate)
 	if err != nil {
-		http.Error(w, "invalid end_date", 400)
+		jsonError(w, "invalid end_date", http.StatusBadRequest)
 		return
 	}
 
 	b := domain.Booking{
-		UserID:     req.UserID,
+		UserID:     userID,
 		RoomID:     req.RoomID,
 		MealplanID: req.MealplanID,
 		PackageID:  req.PackageID,
@@ -60,9 +76,12 @@ func (h *Handler) Create(w http.ResponseWriter, r *http.Request) {
 		TotalPrice: req.TotalPrice,
 	}
 
-	res, err := h.service.Create(b)
+	log.Printf("Creating booking: user_id=%d, room_id=%d, payment_method=%s", b.UserID, b.RoomID, req.PaymentMethod)
+
+	res, err := h.service.Create(b, req.PaymentMethod)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("booking create error: %v", err)
+		jsonError(w, "error creating booking", http.StatusInternalServerError)
 		return
 	}
 
@@ -72,13 +91,21 @@ func (h *Handler) Create(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handler) GetAll(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		jsonError(w, "method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
-	data, err := h.service.GetAll()
+	// Get user_id from JWT token
+	userID, ok := r.Context().Value(common.ContextUserID).(int)
+	if !ok || userID == 0 {
+		jsonError(w, "authentication required", http.StatusUnauthorized)
+		return
+	}
+
+	// Get only current user's bookings
+	data, err := h.service.GetAllByUser(userID)
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		jsonError(w, "error fetching bookings", http.StatusInternalServerError)
 		return
 	}
 
@@ -88,19 +115,19 @@ func (h *Handler) GetAll(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handler) GetByID(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		jsonError(w, "method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
-		http.Error(w, "invalid id", 400)
+		jsonError(w, "invalid id", http.StatusBadRequest)
 		return
 	}
 
 	data, err := h.service.GetByID(id)
 	if err != nil {
-		http.Error(w, err.Error(), 404)
+		jsonError(w, "booking not found", http.StatusNotFound)
 		return
 	}
 
@@ -110,7 +137,7 @@ func (h *Handler) GetByID(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handler) Update(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPut {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		jsonError(w, "method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -122,19 +149,19 @@ func (h *Handler) Update(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, "invalid json", 400)
+		jsonError(w, "invalid json", http.StatusBadRequest)
 		return
 	}
 
 	start, err := time.Parse("2006-01-02", req.StartDate)
 	if err != nil {
-		http.Error(w, "invalid start_date", 400)
+		jsonError(w, "invalid start_date", http.StatusBadRequest)
 		return
 	}
 
 	end, err := time.Parse("2006-01-02", req.EndDate)
 	if err != nil {
-		http.Error(w, "invalid end_date", 400)
+		jsonError(w, "invalid end_date", http.StatusBadRequest)
 		return
 	}
 
@@ -147,7 +174,7 @@ func (h *Handler) Update(w http.ResponseWriter, r *http.Request) {
 
 	res, err := h.service.Update(b)
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		jsonError(w, "error updating booking", http.StatusInternalServerError)
 		return
 	}
 
@@ -157,20 +184,29 @@ func (h *Handler) Update(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handler) Delete(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodDelete {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		jsonError(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Get user_id from JWT token
+	userID, ok := r.Context().Value(common.ContextUserID).(int)
+	if !ok || userID == 0 {
+		jsonError(w, "authentication required", http.StatusUnauthorized)
 		return
 	}
 
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
-		http.Error(w, "invalid id", 400)
+		jsonError(w, "invalid id", http.StatusBadRequest)
 		return
 	}
 
-	if err := h.service.Delete(id); err != nil {
-		http.Error(w, err.Error(), 500)
+	// Use CancelBooking to verify owner and release room
+	if err := h.service.CancelBooking(id, userID); err != nil {
+		jsonError(w, "error deleting booking", http.StatusInternalServerError)
 		return
 	}
 
-	w.WriteHeader(http.StatusNoContent)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"message": "booking deleted"})
 }

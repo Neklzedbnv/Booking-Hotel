@@ -11,18 +11,23 @@ import (
 	"sync"
 	"time"
 
+	"Gofinal/pkg/common"
+
 	"github.com/dgrijalva/jwt-go"
 )
 
 // ─── Context keys ────────────────────────────────────────────────────────────
 
-type contextKey string
-
-const (
-	ContextUserID    contextKey = "userID"
-	ContextUserRole  contextKey = "userRole"
-	ContextRequestID contextKey = "requestID"
+// Use context keys from common package
+var (
+	ContextUserID    = common.ContextUserID
+	ContextUserRole  = common.ContextUserRole
+	ContextUserEmail = common.ContextUserEmail
+	ContextRequestID = common.ContextRequestID
 )
+
+// AdminEmail - the only administrator's email
+const AdminEmail = "abzalbahktiarow2006@gmail.com"
 
 // JWT secret – must match the one used in auth.Handler.Login
 var jwtSecret = []byte("yourSecretKey")
@@ -196,6 +201,9 @@ func Authenticate(next http.Handler) http.Handler {
 		if role, ok := claims["role"].(string); ok {
 			ctx = context.WithValue(ctx, ContextUserRole, role)
 		}
+		if email, ok := claims["email"].(string); ok {
+			ctx = context.WithValue(ctx, ContextUserEmail, email)
+		}
 
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
@@ -228,6 +236,33 @@ func RequireRole(role string) Middleware {
 			next.ServeHTTP(w, r)
 		})
 	}
+}
+
+// RequireAdmin - middleware that checks if user is administrator (email = AdminEmail)
+func RequireAdmin(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		email, _ := r.Context().Value(ContextUserEmail).(string)
+		if email != AdminEmail {
+			// Redirect to home if not admin
+			http.Redirect(w, r, "/", http.StatusFound)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+// RequireAdminAPI - middleware for API endpoints (returns JSON error)
+func RequireAdminAPI(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		email, _ := r.Context().Value(ContextUserEmail).(string)
+		if email != AdminEmail {
+			writeJSON(w, http.StatusForbidden, map[string]string{
+				"error": "access denied: admin only",
+			})
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
 }
 
 // ─── Rate Limiter (per-IP, token bucket) ─────────────────────────────────────

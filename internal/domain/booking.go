@@ -12,5 +12,6 @@ type Booking struct {
 	EndDate    time.Time `json:"end_date"`
 	StayDays   int       `json:"stay_days"`
 	TotalPrice float64   `json:"total_price"`
+	Status     string    `json:"status"` // pending, confirmed, cancelled, completed
 	CreatedAt  time.Time `json:"created_at"`
 }
