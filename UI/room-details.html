@@ -1,178 +1,92 @@
+{{define "room-details.html"}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deluxe Room - Aurelian Hotel</title>
-    <link rel="stylesheet" href="../public/css/style.css">
+  <meta charset="UTF-8"/>
+  <meta name="google" content="notranslate"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Room {{.Room.Code}} — Aurelian Hotel</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="navbar-brand">Aurelian<span>.</span></a>
+      <a href="/" class="navbar-brand">Aurelian<span>.</span></a>
       <div class="navbar-links">
-        <a href="index.html">Home</a>
-        <a href="rooms.html" class="active">Rooms</a>
-        <a href="booking.html">Booking</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/rooms" class="active">Rooms</a>
+        <a href="/booking">Booking</a>
+        <a href="/contact">Contact</a>
       </div>
-      <div class="navbar-actions">
-        <a href="profile.html">Profile</a>
-        <a href="login.html">Sign In</a>
-        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
-      </div>
-      <div class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="index.html">Home</a>
-      <a href="rooms.html">Rooms</a>
-      <a href="booking.html">Booking</a>
-      <a href="contact.html">Contact</a>
-      <a href="profile.html">Profile</a>
-      <a href="login.html">Sign In</a>
+      <div class="navbar-actions" id="navAuthDetail"></div>
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        <a href="rooms.html">Rooms</a>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        <span>Deluxe Room</span>
-      </div>
-      <h1>Deluxe Room</h1>
-      <p>Premium comfort with city views and elegant furnishings.</p>
-    </div>
-  </div>
-
   <!-- ROOM DETAIL -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">{{.RoomType.Name}}</span>
+      <h1 class="section-title">Room {{.Room.Code}}</h1>
+      <p class="section-subtitle">${{.Room.Price}} / night &bull; up to {{.Room.Capacity}} guests</p>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
-      <div class="room-detail">
-
-        <!-- Left: Info -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+        <!-- Image -->
         <div>
-          <div class="room-gallery">
-            <img src="images/room-deluxe.jpg" alt="Deluxe Room interior" />
-          </div>
+          <img src="{{roomImg .Room.TypeID}}" alt="Room {{.Room.Code}}" style="width:100%;border-radius:var(--radius-xl);"/>
+        </div>
+        <!-- Info -->
+        <div>
+          <h2>About the Room</h2>
+          <p style="margin:1rem 0;color:var(--color-text-secondary);">
+            Category: <strong>{{.RoomType.Name}}</strong><br/>
+            Capacity: <strong>up to {{.Room.Capacity}} guests</strong><br/>
+            Status: <span style="color:{{statusColor .Room.Status}};font-weight:600;">{{statusText .Room.Status}}</span>
+          </p>
 
-          <div style="margin-top:32px;">
-            <span class="badge">Premium</span>
-            <div class="room-detail-meta" style="margin-top:16px;">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-                King Bed
-              </span>
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                42 m&sup2;
-              </span>
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                2 Guests
-              </span>
-            </div>
+          <h3 style="margin-top:2rem;">Available Services</h3>
+          <ul style="list-style:none;padding:0;">
+            {{range .Services}}
+            <li style="padding:.5rem 0;border-bottom:1px solid var(--color-border);">
+              {{.Name}} — <strong>${{.Price}}</strong>
+            </li>
+            {{end}}
+          </ul>
 
-            <p class="room-detail-desc">
-              Our Deluxe Room offers a generous 42 square meters of elegant living space, featuring a luxurious king-size bed with premium linens, a spacious marble bathroom with rain shower, and floor-to-ceiling windows that frame stunning city views. The room includes a comfortable sitting area, a dedicated workspace, and thoughtful amenities to ensure a memorable stay.
-            </p>
+          <h3 style="margin-top:2rem;">Meal Plans</h3>
+          <ul style="list-style:none;padding:0;">
+            {{range .MealPlans}}
+            <li style="padding:.5rem 0;border-bottom:1px solid var(--color-border);">
+              {{.Name}} — <strong>${{.PricePerDay}} / day</strong>
+            </li>
+            {{end}}
+          </ul>
 
-            <h3 style="font-size:1.125rem; margin-bottom:16px;">Room Amenities</h3>
-            <div class="room-features-grid">
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6l3-3"/><path d="M12 2v6l-3-3"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
-                Free Wi-Fi
-              </div>
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                55" Smart TV
-              </div>
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-                Air Conditioning
-              </div>
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" x2="6" y1="1" y2="4"/><line x1="10" x2="10" y1="1" y2="4"/><line x1="14" x2="14" y1="1" y2="4"/></svg>
-                Coffee Maker
-              </div>
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
-                24/7 Room Service
-              </div>
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                In-Room Safe
-              </div>
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>
-                City View
-              </div>
-              <div class="room-feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
-                Spa Access
-              </div>
-            </div>
+          <h3 style="margin-top:2rem;">Packages</h3>
+          <ul style="list-style:none;padding:0;">
+            {{range .Packages}}
+            <li style="padding:.5rem 0;border-bottom:1px solid var(--color-border);">
+              {{.Name}} — {{mul .PriceModifier 100}}% discount
+            </li>
+            {{end}}
+          </ul>
+
+          <div style="margin-top:2rem;">
+            {{if isBooked .Room.Status}}
+              <span class="btn btn-primary btn-lg" style="opacity:.5;pointer-events:none;">Room Occupied</span>
+            {{else}}
+              <a href="/booking?room_id={{.Room.ID}}" class="btn btn-primary btn-lg">Book Now</a>
+            {{end}}
           </div>
         </div>
-
-        <!-- Right: Booking Sidebar -->
-        <div class="booking-sidebar">
-          <p class="booking-sidebar-price">$320 <span>/ night</span></p>
-          <div style="display:flex; gap:4px; margin-top:8px;">
-            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--color-accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--color-accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--color-accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--color-accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--color-accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <span style="font-size:0.8125rem; color:var(--color-text-muted); margin-left:4px;">4.9 (128 reviews)</span>
-          </div>
-
-          <hr />
-
-          <form action="booking.html" method="get">
-            <div class="form-group">
-              <label class="form-label" for="checkin">Check In</label>
-              <input type="date" id="checkin" class="form-input" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="checkout">Check Out</label>
-              <input type="date" id="checkout" class="form-input" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="guests">Guests</label>
-              <select id="guests" class="form-select">
-                <option>1 Guest</option>
-                <option selected>2 Guests</option>
-              </select>
-            </div>
-            <hr />
-            <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:8px;">
-              <span style="color:var(--color-text-muted)">$320 x 3 nights</span>
-              <span style="font-weight:600;">$960</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:8px;">
-              <span style="color:var(--color-text-muted)">Service fee</span>
-              <span style="font-weight:600;">$48</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:8px;">
-              <span style="color:var(--color-text-muted)">Taxes</span>
-              <span style="font-weight:600;">$96</span>
-            </div>
-            <hr />
-            <div style="display:flex; justify-content:space-between; font-size:1.125rem; font-weight:700;">
-              <span>Total</span>
-              <span>$1,104</span>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px;">Reserve Now</button>
-          </form>
-        </div>
-
       </div>
     </div>
   </section>
@@ -183,32 +97,22 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand">Aurelian<span>.</span></p>
-          <p class="footer-desc">Luxury hospitality redefined. Experience world-class comfort and timeless elegance at every stay.</p>
+          <p class="footer-desc">A new format luxury hotel.</p>
         </div>
         <div class="footer-col">
-          <h4>Explore</h4>
-          <a href="rooms.html">Our Rooms</a>
-          <a href="booking.html">Reservations</a>
-          <a href="contact.html">Contact Us</a>
-        </div>
-        <div class="footer-col">
-          <h4>Experience</h4>
-          <a href="#">The Spa</a>
-          <a href="#">Fine Dining</a>
-          <a href="#">Events</a>
-        </div>
-        <div class="footer-col">
-          <h4>Support</h4>
-          <a href="login.html">Sign In</a>
-          <a href="register.html">Register</a>
-          <a href="profile.html">My Profile</a>
+          <h4>Navigation</h4>
+          <a href="/">Home</a>
+          <a href="/rooms">Rooms</a>
+          <a href="/booking">Booking</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Aurelian Hotel &amp; Resorts. All rights reserved.</p>
+        <p>&copy; 2026 Aurelian Hotel &amp; Resorts.</p>
       </div>
     </div>
   </footer>
 
+  <script type="text/babel" src="/public/js/room-details.jsx"></script>
 </body>
 </html>
+{{end}}

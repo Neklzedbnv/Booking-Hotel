@@ -17,7 +17,7 @@ func NewPackageHandler(s *PackageService) *PackageHandler {
 	return &PackageHandler{service: s}
 }
 
-// CreatePackage создает новый пакет услуг
+// CreatePackage creates new service package
 func (h *PackageHandler) CreatePackage(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
@@ -25,9 +25,9 @@ func (h *PackageHandler) CreatePackage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req struct {
-		Name           string  `json:"name"`
-		Description    string  `json:"description"`
-		PriceModifier  float64 `json:"price_modifier"`
+		Name          string  `json:"name"`
+		Description   string  `json:"description"`
+		PriceModifier float64 `json:"price_modifier"`
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -54,7 +54,6 @@ func (h *PackageHandler) CreatePackage(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(created)
 }
-
 
 func (h *PackageHandler) GetPackage(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -84,7 +83,6 @@ func (h *PackageHandler) GetPackage(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(pkg)
 }
 
-
 func (h *PackageHandler) ListPackages(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
@@ -102,7 +100,6 @@ func (h *PackageHandler) ListPackages(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(pkgs)
 }
-
 
 func (h *PackageHandler) UpdatePackage(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPut {
@@ -123,10 +120,10 @@ func (h *PackageHandler) UpdatePackage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req struct {
-		Name           *string  `json:"name"`
-		Description    *string  `json:"description"`
-		PriceModifier  *float64 `json:"price_modifier"`
-		IsActive       *bool    `json:"is_active"`
+		Name          *string  `json:"name"`
+		Description   *string  `json:"description"`
+		PriceModifier *float64 `json:"price_modifier"`
+		IsActive      *bool    `json:"is_active"`
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -143,7 +140,6 @@ func (h *PackageHandler) UpdatePackage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(updated)
 }
-
 
 func (h *PackageHandler) DeletePackage(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodDelete {
@@ -173,7 +169,6 @@ func (h *PackageHandler) DeletePackage(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{"message": "package deleted successfully"})
 }
 
-
 func (h *PackageHandler) AttachPackageToRoom(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
@@ -200,7 +195,6 @@ func (h *PackageHandler) AttachPackageToRoom(w http.ResponseWriter, r *http.Requ
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(map[string]string{"message": "package attached to room successfully"})
 }
-
 
 func (h *PackageHandler) GetRoomPackages(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -229,7 +223,6 @@ func (h *PackageHandler) GetRoomPackages(w http.ResponseWriter, r *http.Request)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(packages)
 }
-
 
 func (h *PackageHandler) DetachPackageFromRoom(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodDelete {
